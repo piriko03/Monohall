@@ -1,0 +1,166 @@
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f0f4f8, #cfd9e3); /* Soft gradient background */
+            overflow-x: hidden;
+            min-height: 100vh; /* Ensure full height */
+        }
+
+        .navbar {
+            position: relative;
+            padding: 20px 0; /* Space above the logo */
+            background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent background */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Shadow for the navbar */
+            backdrop-filter: blur(10px); /* Blur effect */
+        }
+
+        .navbar::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(to right, white, green, white);
+        }
+
+        label {
+            display: block;
+            position: relative; /* Position for the slide */
+        }
+
+        .toggle {
+            position: absolute;
+            height: 30px;
+            width: 30px;
+            top: 20px;
+            right: 15px;
+            z-index: 2;
+            cursor: pointer;
+            border-radius: 2px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .toggle .common {
+            position: absolute;
+            height: 2px;
+            width: 20px;
+            background-color: black;
+            border-radius: 50px;
+            transition: 0.3s ease;
+        }
+
+        .toggle .top {
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .toggle .mid {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .toggle .bottom {
+            top: 70%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(5px);
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0s, opacity 0.3s ease;
+            z-index: 1;
+        }
+
+        .slide {
+            height: 100%;
+            width: 220px;
+            position: absolute;
+            transition: 0.5s ease;
+            transform: translateX(220px);
+            right: 0;
+            z-index: 2;
+            background-color: white;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2); /* Shadow for the slide */
+            padding: 20px; /* Padding for the content */
+        }
+
+        h1 {
+            color: black;
+            font-weight: 800;
+            text-align: center;
+            padding: 10px 0;
+            pointer-events: none;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            margin: 10px 0; /* Space between items */
+        }
+
+        ul li a {
+            color: black;
+            font-weight: 500;
+            text-transform: capitalize;
+            text-decoration: none;
+            transition: color 1s ease; /* Smooth transition for color change */
+            position: relative;
+        }
+
+        ul li a:hover {
+            color: green; /* Change color to green on hover */
+        }
+
+        input {
+            display: none;
+            visibility: hidden;
+        }
+
+        input:checked~.overlay {
+            visibility: visible;
+            opacity: 1;
+            z-index: 1;
+        }
+
+        input:checked~.slide {
+            transform: translateX(0);
+        }
+
+        input:checked~.toggle .top {
+            left: 2px;
+            top: 14px;
+            width: 25px;
+            transform: rotate(45deg);
+        }
+
+        input:checked~.toggle .bottom {
+            left: 2px;
+            top: 14px;
+            width: 25px;
+            transform: rotate(-45deg);
+        }
+
+        input:checked~.toggle .mid {
+            opacity: 0;
+            transform: translate(20px);
+        }
+    </style>
